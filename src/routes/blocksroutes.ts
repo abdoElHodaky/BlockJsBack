@@ -27,14 +27,14 @@ blocksroute.get("/blocks/initial",(req,res)=>{
 
 blocksroute.post("/block/create",(req,res)=>{
    let lastblock:Block;
-   let block:Block=<Block>{
-      prevhash:lastblock.hash
-   }
+   let block:Block;
    AppDataSource.manager.findOneByOrFail(Block,{
       where:{
-          type:Not("initial")
-      },
-      order:{id:"desc"}
+          {
+           type:Not("initial")
+          }
+        }, order:{id:"desc"}
+      }
   }).then(b=>{
     lastblock=b  
   }).catch(console.log)
