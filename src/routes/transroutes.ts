@@ -3,7 +3,7 @@ import { Trans } from "../entity/Trans";
 import { Block } from "../entity/Block"
 import { AppDataSource } from "../_datasource";
 
-export const articlesroute=Router()
+export const transroute=Router()
 
 transsroute.get("/trans/",(req,res)=>{
     AppDataSource.manager.find(Block).
