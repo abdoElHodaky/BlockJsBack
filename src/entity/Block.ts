@@ -15,4 +15,16 @@ export class Block {
     @Column({default:Date.now()})
     timestamp:Date
     @OneToMany(()=>Block,block=>trans.block) trans:Trans[]
+
+
+    ghash(){
+    let b=new Buffer.from(
+      this.prevhash+
+      JSON.stringify(this.trans)+
+      JSON.stringify(this.timestamp))
+      this.hash=require("crypto").
+      createHash("sha256")
+      .update(b).digest("hex")
+    }
 }
+
