@@ -30,7 +30,7 @@ blocksroute.post("/block/create",(req,res)=>{
    let block:Block=<Block>{
       prevhash:lastblock.hash
    }
-   AppDataSource.manager.findOne(Block,{
+   AppDataSource.manager.findOneOrFail(Block,{
       where:{
           type:Not("initial")
       },
