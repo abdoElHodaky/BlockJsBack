@@ -7,7 +7,7 @@ import { AppDataSource } from "./_datasource";
 import { articlesroute } from "./routes/articlesroute";
 import { authorsroutes } from "./routes/authorsroutes";
 import { attachmentsroute } from "./routes/attachmentroutes";*/
-import { blockstrans } from "./routes/blocksroutes"
+import { blocksroutes } from "./routes/blocksroutes"
 import { transroutes } from "./routes/transroutes"
 export const apiv1=Router();
 apiv1.get("/",(req,res)=>{
@@ -52,5 +52,5 @@ apiv1.use(authorsroutes)
 apiv1.use(articlesroute)
 apiv1.use(attachmentsroute)*/
 
-apiv1.use(blockroutes)
+apiv1.use(blocksroutes)
 apiv1.use(transroutes)
