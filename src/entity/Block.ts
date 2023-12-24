@@ -10,7 +10,9 @@ export class Block {
     hash: string;
 
     @Column({type: "varchar", default:""})
-    prevhash: string
+    prevhash: string 
 
+    @Column({default:Date.now()})
+    timestamp:Date
     @OneToMany(()=>Block,block=>trans.block) trans:Trans[]
 }
