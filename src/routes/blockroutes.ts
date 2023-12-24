@@ -14,10 +14,10 @@ blockssroute.get("/blocks/",(req,res)=>{
 
 
 blocksroute.post("/block/create",(req,res)=>{
-   let last block;
+   let lastblock:Block;
    let block:Block=<Block>{
       trans:Trans[],
-      hash:""
+      hash:lastblock.hash
     }
    AppDataSource.manager.findOne(Block,{
       where:{
