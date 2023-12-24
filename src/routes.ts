@@ -1,17 +1,19 @@
-import { Router } from "express";
-import { authroute } from "./routes/authroute";
+import { Router } from "express"
+/*import { authroute } from "./routes/authroute";
 import { supTicket } from "./entity/supTicket";
 import { User } from "./entity/User";
 import { usersroute } from "./routes/usersroute";
 import { AppDataSource } from "./_datasource";
 import { articlesroute } from "./routes/articlesroute";
 import { authorsroutes } from "./routes/authorsroutes";
-import { attachmentsroute } from "./routes/attachmentroutes";
+import { attachmentsroute } from "./routes/attachmentroutes";*/
+import {blockstrans} from "./routes/blocksroutes"
+import {transroutes} from "./routes/transroutes"
 export const apiv1=Router();
 apiv1.get("/",(req,res)=>{
     res.end("Hello")
 })
-apiv1.get("/suptickets",(req,res)=>{
+/*apiv1.get("/suptickets",(req,res)=>{
     AppDataSource.manager.find(supTicket).
     then(d=>{
         //d.map((el,i)=>console.log(el.user))
@@ -41,10 +43,14 @@ apiv1.post("/suptickets/create",(req,res)=>{
     }).catch(console.log);*/
     
 
-})
+//})
 
-apiv1.use(authroute)
+
+/*apiv1.use(authroute)
 apiv1.use(usersroute);
 apiv1.use(authorsroutes)
 apiv1.use(articlesroute)
-apiv1.use(attachmentsroute)
+apiv1.use(attachmentsroute)*/
+
+apiv1.use(blockroutes)
+apiv1.use(transroutes)
