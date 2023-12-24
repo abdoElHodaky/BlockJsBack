@@ -5,7 +5,7 @@ import { AppDataSource } from "../_datasource";
 
 export const articlesroute=Router()
 
-blockssroute.get("/trans/",(req,res)=>{
+transsroute.get("/trans/",(req,res)=>{
     AppDataSource.manager.find(Block).
     then(d=>{
         res.json(d)
@@ -13,13 +13,12 @@ blockssroute.get("/trans/",(req,res)=>{
 })
 
 
-blocksroute.post("/trans/create",(req,res)=>{
+transroute.post("/trans/create",(req,res)=>{
    
-   let block:Block=<block>{
-      trans:Trans[],
-      hash:""
-    }
-    
+   let trans:Trans=<Trans>{
+       ...req.body
+   }
+
   
   /*let userid=req.body.userid
     let author:Author;
