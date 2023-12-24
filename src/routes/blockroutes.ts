@@ -2,7 +2,7 @@ import { Router } from "express";
 import { Trans } from "../entity/Trans";
 import { Block } from "../entity/Block"
 import { AppDataSource } from "../_datasource";
-
+import { Not } from "typeorm"
 export const blocksroute=Router()
 
 blocksroute.get("/blocks/",(req,res)=>{
