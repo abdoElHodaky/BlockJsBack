@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, TableInheritance ,AfterInsert} from "typeorm"
-import { Block } from "./block";
+import { Block } from "./Block";
 @Entity()
 export class Trans {
     @PrimaryGeneratedColumn("increment")
