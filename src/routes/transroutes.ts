@@ -30,7 +30,6 @@ transroute.post("/trans/create",(req,res)=>{
        return lastblock=d
     }).then(block=>{
         trans.block=block
-        block.trans=[]
         block.trans.push(trans)
         AppDataSource.manager.save(Block,block)
         return trans
