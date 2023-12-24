@@ -12,5 +12,5 @@ export class Block {
     @Column({type: "varchar"})
     prevhash: string
 
-    @OneToMany(()=>,b=>author.articles) trans:Trans[];
+    @OneToMany(()=>Block,block=>trans.block) trans:Trans[]
 }
