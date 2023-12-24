@@ -20,7 +20,9 @@ transroute.post("/trans/create",(req,res)=>{
    }
 
   AppDataSource.manager.findOne(Block,{
-      where:{},
+      where:{
+          type:Not("initial")
+      },
       order:{id:"desc"}
   }).
     then(d=>{
