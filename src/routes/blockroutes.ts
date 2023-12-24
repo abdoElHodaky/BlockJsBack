@@ -17,7 +17,7 @@ blocksroute.post("/block/create",(req,res)=>{
    let lastblock:Block;
    let block:Block=<Block>{
       trans:Trans[],
-      hash:lastblock.hash
+      prevhash:lastblock.hash
     }
    AppDataSource.manager.findOne(Block,{
       where:{
