@@ -11,13 +11,25 @@ blocksroute.get("/blocks/",(req,res)=>{
         res.json(d)
     }).catch(console.log)
 })
-
+blocksroute.get("/blocks/initial",(req,res)=>{
+ AppDataSource.manager.findOne({
+     where:{type:"initial"}
+ }).then(b=>{
+     return b
+ }).catch(e=>{
+     let b:Block=<Block>{
+         type:"initial"
+     }
+     await AppDataSource.manager.create(Block,b)
+ })
+    
+})
 
 blocksroute.post("/block/create",(req,res)=>{
    let lastblock:Block;
    let block:Block=<Block>{
       prevhash:lastblock.hash
-    }
+   }
    AppDataSource.manager.findOne(Block,{
       where:{
           type:Not("initial")
@@ -27,7 +39,7 @@ blocksroute.post("/block/create",(req,res)=>{
     lastblock=b  
   }).catch(console.log)
    if(lastblock.trans.length==2){
-       AppDataSource.manager.save(Block,block)
+       await AppDataSource.manager.save(Block,block)
    }
   
   /*let userid=req.body.userid
