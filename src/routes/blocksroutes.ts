@@ -26,10 +26,10 @@ blocksroutes.get("/blocks/initial",(req,res)=>{
 })
 
 blocksroute.post("/block/create",(req,res)=>{
-   let lastblock:Block=<Block>{};
+   let lastblock:Block;
    let block:Block;
    AppDataSource.manager.findOneByOrFail(Block,{
-      order:{id:"desc"},
+      "order":{id:"desc"},
       where:{
           type:Not("initial")
       }
