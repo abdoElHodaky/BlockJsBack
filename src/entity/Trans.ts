@@ -13,4 +13,14 @@ export class Trans {
     @Column({default:""})
     hash:string
     @ManyToOne(()=>Block,block=>block.trans) block:Block
+    ghash(){
+      let b=new Buffer.from(
+      JSON.stringify(this.timestamp))
+      this.hash=require("crypto").
+      createHash("sha256")
+      .update(b).digest("hex")
+    
+    }
+
+
 }
