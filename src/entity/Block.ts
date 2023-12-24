@@ -6,10 +6,10 @@ export class Block {
     @PrimaryGeneratedColumn("increment")
     id: number;
 
-    @Column({type: "varchar", nullable: true})
+    @Column({type: "varchar", default: "",})
     hash: string;
 
-    @Column({type: "varchar"})
+    @Column({type: "varchar", default:""})
     prevhash: string
 
     @OneToMany(()=>Block,block=>trans.block) trans:Trans[]
