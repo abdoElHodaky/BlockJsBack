@@ -4,9 +4,9 @@ import { Block } from "../entity/Block"
 import { AppDataSource } from "../_datasource";
 import { Not } from "typeorm"
 
-export const transroute=Router()
+export const transroutes=Router()
 
-transroute.get("/trans/",(req,res)=>{
+transroutes.get("/trans/",(req,res)=>{
     AppDataSource.manager.find(Block).
     then(d=>{
         res.json(d)
@@ -14,7 +14,7 @@ transroute.get("/trans/",(req,res)=>{
 })
 
 
-transroute.post("/trans/create",(req,res)=>{
+transroutes.post("/trans/create",(req,res)=>{
    let lastblock;
    let trans:Trans=<Trans>{
        ...req.body
