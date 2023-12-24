@@ -29,11 +29,9 @@ blocksroute.post("/block/create",(req,res)=>{
    let lastblock:Block;
    let block:Block;
    AppDataSource.manager.findOneByOrFail(Block,{
+      order:{id:"desc"},
       where:{
-          {
-           type:Not("initial")
-          }
-        }, order:{id:"desc"}
+          type:Not("initial")
       }
   }).then(b=>{
     lastblock=b  
