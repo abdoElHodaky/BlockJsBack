@@ -5,7 +5,7 @@ import { AppDataSource } from "../_datasource";
 
 export const transroute=Router()
 
-transsroute.get("/trans/",(req,res)=>{
+transroute.get("/trans/",(req,res)=>{
     AppDataSource.manager.find(Block).
     then(d=>{
         res.json(d)
