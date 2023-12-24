@@ -21,14 +21,14 @@ export class Block {
         this.ghash()
     }
     @AfterUpdate()
-    calchash(){
+    calcchash(){
         this.ghash()
     }
     
     
     
     ghash(){
-    let b=new Buffer.from(
+    let b= Buffer.from(
       this.prevhash+
       JSON.stringify(this.trans)+
       JSON.stringify(this.timestamp))
