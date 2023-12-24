@@ -5,7 +5,7 @@ import { AppDataSource } from "../_datasource";
 
 export const blocksroute=Router()
 
-blockssroute.get("/blocks/",(req,res)=>{
+blocksroute.get("/blocks/",(req,res)=>{
     AppDataSource.manager.find(Block).
     then(d=>{
         res.json(d)
