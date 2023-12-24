@@ -24,8 +24,16 @@ transroute.post("/trans/create",(req,res)=>{
       order:{id:"desc"}
   }).
     then(d=>{
-        lastblock=d
-    }).catch(console.log)
+       return lastblock=d
+    }).then(block=>{
+        trans.block=block
+        block.trans=[]
+        block.trans.push(trans)
+        return trans
+    }).then(t=>{
+        AppDataSource.manager.save(Trans,t)
+    })
+    .catch(console.log)
   /*let userid=req.body.userid
     let author:Author;
     AppDataSource.manager.findOneByOrFail(Author,{id:userid}).then(d=>{
