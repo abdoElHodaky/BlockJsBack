@@ -12,7 +12,7 @@ blocksroute.get("/blocks/",(req,res)=>{
     }).catch(console.log)
 })
 blocksroute.get("/blocks/initial",(req,res)=>{
- AppDataSource.manager.findOneByOrFail({
+ AppDataSource.manager.findOneByOrFail(Block,{
      where:{type:"initial"}
  }).then(b=>{
      return b
