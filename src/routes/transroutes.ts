@@ -31,6 +31,7 @@ transroute.post("/trans/create",(req,res)=>{
         trans.block=block
         block.trans=[]
         block.trans.push(trans)
+        AppDataSource.manager.save(Block,block)
         return trans
     }).then(t=>{
         AppDataSource.manager.save(Trans,t)
