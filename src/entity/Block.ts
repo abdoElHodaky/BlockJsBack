@@ -13,7 +13,11 @@ export class Block {
     prevhash: string 
 
     @Column({default:Date.now()})
-    timestamp:Date
+    timestamp:number 
+
+    @Column()
+    type:string
+    
     @OneToMany(()=>Block,block=>trans.block) trans:Trans[]
 
     @AfterInsert()
