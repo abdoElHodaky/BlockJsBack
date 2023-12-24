@@ -21,7 +21,7 @@ transroute.post("/trans/create",(req,res)=>{
 
   AppDataSource.manager.findOne(Block,{
       where:{},
-      order:"desc"
+      order:{id:"desc"}
   }).
     then(d=>{
         lastblock=d
