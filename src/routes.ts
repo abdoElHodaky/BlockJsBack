@@ -7,8 +7,8 @@ import { AppDataSource } from "./_datasource";
 import { articlesroute } from "./routes/articlesroute";
 import { authorsroutes } from "./routes/authorsroutes";
 import { attachmentsroute } from "./routes/attachmentroutes";*/
-import {blockstrans} from "./routes/blocksroutes"
-import {transroutes} from "./routes/transroutes"
+import { blockstrans } from "./routes/blocksroutes"
+import { transroutes } from "./routes/transroutes"
 export const apiv1=Router();
 apiv1.get("/",(req,res)=>{
     res.end("Hello")
