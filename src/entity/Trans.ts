@@ -10,6 +10,7 @@ export class Trans {
     to:string;
     @Column({default:0})
     amount:number 
-
+    @Column({default:""})
+    hash:string
     @ManyToOne(()=>Block,block=>block.trans) block:Block
 }
