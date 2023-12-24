@@ -14,12 +14,18 @@ transsroute.get("/trans/",(req,res)=>{
 
 
 transroute.post("/trans/create",(req,res)=>{
-   
+   let lastblock;
    let trans:Trans=<Trans>{
        ...req.body
    }
 
-  
+  AppDataSource.manager.findOne(Block,{
+      where:{},
+      order:"desc"
+  }).
+    then(d=>{
+        lastblock=d
+    }).catch(console.log)
   /*let userid=req.body.userid
     let author:Author;
     AppDataSource.manager.findOneByOrFail(Author,{id:userid}).then(d=>{
