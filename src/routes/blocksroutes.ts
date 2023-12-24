@@ -20,7 +20,7 @@ blocksroute.get("/blocks/initial",(req,res)=>{
      let b:Block=<Block>{
          type:"initial"
      }
-     await AppDataSource.manager.create(Block,b)
+      AppDataSource.manager.create(Block,b)
  })
     
 })
@@ -39,7 +39,7 @@ blocksroute.post("/block/create",(req,res)=>{
     lastblock=b  
   }).catch(console.log)
    if(lastblock.trans.length==2){
-       await AppDataSource.manager.save(Block,block)
+       AppDataSource.manager.save(Block,block)
    }
   
   /*let userid=req.body.userid
