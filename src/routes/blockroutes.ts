@@ -14,12 +14,22 @@ blockssroute.get("/blocks/",(req,res)=>{
 
 
 blocksroute.post("/block/create",(req,res)=>{
-   
-   let block:Block=<block>{
+   let last block;
+   let block:Block=<Block>{
       trans:Trans[],
       hash:""
     }
-    
+   AppDataSource.manager.findOne(Block,{
+      where:{
+          type:Not("initial")
+      },
+      order:{id:"desc"}
+  }).then(b=>{
+    lastblock=b  
+  }).catch(console.log)
+   if(lastblock.trans.length==2){
+       AppDataSource.manager.save(Block,block)
+   }
   
   /*let userid=req.body.userid
     let author:Author;
