@@ -1,4 +1,4 @@
-import { Entity,Column,OneToMany,PrimaryGeneratedColumn} from "typeorm"
+import { Entity,Column,OneToMany,PrimaryGeneratedColumn,AfterInsert,AfterUpdate} from "typeorm"
 import { Trans } from "./Trans";
 
 @Entity()
@@ -16,7 +16,17 @@ export class Block {
     timestamp:Date
     @OneToMany(()=>Block,block=>trans.block) trans:Trans[]
 
-
+    @AfterInsert()
+    calchash(){
+        this.ghash()
+    }
+    @AfterUpdate()
+    calchash(){
+        this.ghash()
+    }
+    
+    
+    
     ghash(){
     let b=new Buffer.from(
       this.prevhash+
