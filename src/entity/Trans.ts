@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, TableInheritance } from "typeorm"
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, TableInheritance ,AfterInsert} from "typeorm"
 import { Block } from "./User";
 @Entity()
 export class Trans {
@@ -13,9 +13,14 @@ export class Trans {
     @Column({default:""})
     hash:string
     @ManyToOne(()=>Block,block=>block.trans) block:Block
+    @AfterInsert()
+    calchash(){
+        this.ghash()
+    }
     ghash(){
-      let b=new Buffer.from(
-      JSON.stringify(this.timestamp))
+      let b=Buffer.from(
+      JSON.stringify(this.timestamp)
+      )
       this.hash=require("crypto").
       createHash("sha256")
       .update(b).digest("hex")
