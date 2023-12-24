@@ -3,15 +3,15 @@ import { Trans } from "../entity/Trans";
 import { Block } from "../entity/Block"
 import { AppDataSource } from "../_datasource";
 import { Not } from "typeorm"
-export const blocksroute=Router()
+export const blocksroutes=Router()
 
-blocksroute.get("/blocks/",(req,res)=>{
+blocksroutes.get("/blocks/",(req,res)=>{
     AppDataSource.manager.find(Block).
     then(d=>{
         res.json(d)
     }).catch(console.log)
 })
-blocksroute.get("/blocks/initial",(req,res)=>{
+blocksroutes.get("/blocks/initial",(req,res)=>{
  AppDataSource.manager.findOneByOrFail(Block,{
      where:{type:"initial"}
  }).then(b=>{
@@ -26,7 +26,7 @@ blocksroute.get("/blocks/initial",(req,res)=>{
 })
 
 blocksroute.post("/block/create",(req,res)=>{
-   let lastblock:Block;
+   let lastblock:Block=<Block>{};
    let block:Block;
    AppDataSource.manager.findOneByOrFail(Block,{
       order:{id:"desc"},
