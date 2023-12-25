@@ -25,7 +25,7 @@ blocksroutes.get("/blocks/initial",(req,res)=>{
     
 })
 
-blocksroute.post("/block/create",(req,res)=>{
+blocksroutes.post("/block/create",(req,res)=>{
    let lastblock:Block=new Block();
    let block:Block=new Block();
    AppDataSource.manager.findOneByOrFail(Block,{
