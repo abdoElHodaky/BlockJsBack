@@ -15,7 +15,7 @@ transroutes.get("/trans/",(req,res)=>{
 
 
 transroutes.post("/trans/create",(req,res)=>{
-   let lastblock;
+   let lastblock=new Block();
    let trans:Trans=<Trans>{
        ...req.body
    }
