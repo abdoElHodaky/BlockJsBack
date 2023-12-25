@@ -18,7 +18,7 @@ export class Block {
     @Column()
     type:string
     
-    @OneToMany(()=>Block,block=>trans.block) trans:Trans[]
+    @OneToMany(()=>Block,block=>trans.block) transS:Trans[]
 
     @AfterInsert()
     calchash(){
