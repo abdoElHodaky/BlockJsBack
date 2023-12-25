@@ -8,7 +8,7 @@ export const transroutes=Router()
 
 transroutes.get("/trans/",(req,res)=>{
     AppDataSource.manager.find(Trans,{
-        releation:{block: true}
+        relations:{block: true}
     }).
     then(d=>{
         res.json(d)
