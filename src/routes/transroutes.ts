@@ -7,7 +7,9 @@ import { Not } from "typeorm"
 export const transroutes=Router()
 
 transroutes.get("/trans/",(req,res)=>{
-    AppDataSource.manager.find(Block).
+    AppDataSource.manager.find(Trans,{
+        releation:{block: true}
+    }).
     then(d=>{
         res.json(d)
     }).catch(console.log)
@@ -31,7 +33,7 @@ transroutes.post("/trans/create",(req,res)=>{
         return d
     }).then(block=>{
         trans.block=block
-        block.trans.push(trans)
+        block.transS.push(trans)
         AppDataSource.manager.save(Block,block)
         return trans
     }).then(t=>{
