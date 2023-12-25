@@ -27,7 +27,8 @@ transroutes.post("/trans/create",(req,res)=>{
       order:{id:"desc"}
   }).
     then(d=>{
-       return lastblock=d
+        lastblock=d
+        return d
     }).then(block=>{
         trans.block=block
         block.trans.push(trans)
