@@ -29,14 +29,14 @@ blocksroutes.post("/block/create",(req,res)=>{
    let lastblock:Block=new Block();
    let block:Block=new Block();
    AppDataSource.manager.findOneByOrFail(Block,{
-      "order":{id:"desc"},
       where:{
           type:Not("initial")
-      }
+      },
+       "order":{id:"desc"}
   }).then(b=>{
     lastblock=b  
   }).catch(console.log)
-   if(lastblock.trans.length==2){
+   if(lastblock.transS.length==2){
        AppDataSource.manager.save(Block,block)
    }
   
