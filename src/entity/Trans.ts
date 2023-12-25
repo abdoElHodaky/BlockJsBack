@@ -12,7 +12,7 @@ export class Trans {
     amount:number 
     @Column({default:""})
     hash:string
-    @ManyToOne(()=>Block,block=>block.trans) block:Block
+    @ManyToOne(()=>Block,block=>block.transS) block:Block
     @AfterInsert()
     calchash(){
         this.ghash()
